@@ -1,3 +1,7 @@
+body {
+    background-color: deepskyblue;
+}
+
 .center {
     text-align: center;
 }
@@ -15,5 +19,18 @@ ul {
 
 .strike {
     text-decoration: line-through;
+}
+
+.editForm {
+    margin-left: 5.5in;
+}
+
+.bold {
+    font-weight: 800;
+}
+
+img {
+    height: 1in;
+    width: 1in;
 }
 

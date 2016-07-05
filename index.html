@@ -49,7 +49,8 @@
                 <ul ng-repeat="item in allToDo track by $index">
                     <div class="row">
                         <div class="col-md-2">
-                            <li ng-class="item.completed ? 'strike' : null">{{ item.title }}</li>
+                            <li class="bold" ng-class="item.completed ? 'strike' : null">{{ item.title }}</li>
+                            <img ng-if="item.imgUrl != ''" src="{{ item.imgUrl }}">
                         </div>
                         <div class="col-md-4">
                             <input class="margin" type="checkbox" ng-click="itemCompleted($index)">
@@ -61,15 +62,21 @@
                             <button class="button" type="submit" ng-click="editItem($index)">Edit</button>
                         </div>
                     </div>
+                </ul>
+                <div class="editForm" ng-hide="hideForm">
                     <div ng-if="editingItem == true">
                         <input class="form-control" placeholder="To-Do Item" ng-model="oneToDo.title">
                         <input class="form-control" placeholder="Description" ng-model="oneToDo.description">
                         <input class="form-control" placeholder="Price" ng-model="oneToDo.price">
                         <input class="form-control" placeholder="Image URL" ng-model="oneToDo.imgUrl">
-                        <center><button type="submit" ng-click="">Update</button></center>
-                        <br>
+                        <div class="col-md-4">
+                            <center><button type="submit" ng-click="updateItem($index)">Update</button></center>
+                        </div>
+                        <div class="col-md-2">
+                            <center><button type="submit" ng-click="cancelEdit()">Cancel</button></center>
+                        </div>
                     </div>
-                </ul>
+                </div>
             </div>
         </center>       
     </body>

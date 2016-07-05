@@ -43,10 +43,21 @@ angular.module("PracticeApp", []).controller("MyController", function($scope, $h
     };
     
     $scope.editItem = function(index) {
+        $scope.hideForm = false;
         $scope.editingItem = true;
         var id = $scope.allToDo[index]._id;
         $http.get('http://mean.codingcamp.us/kyle/todo/' + id).then(function (response){
             $scope.oneToDo = response.data;  
         });
     };
+    
+    $scope.updateItem = function(index) {
+        var id = $scope.allToDo[index]._id;
+        $http.put('http://mean.codingcamp.us/kyle/todo/' + id).then(function (response){  
+        });
+    };
+    
+    $scope.cancelEdit = function() {
+        $scope.hideForm = true;
+    }
 });
