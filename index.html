@@ -53,7 +53,7 @@
                             <img ng-if="item.imgUrl != ''" src="{{ item.imgUrl }}">
                         </div>
                         <div class="col-md-4">
-                            <input class="margin" type="checkbox" ng-click="itemCompleted($index)">
+                            <input ng-model="item.completed" class="margin" type="checkbox" ng-click="itemCompleted($index)">
                         </div>
                         <div class="col-md-4">
                             <button class="button" type="submit" ng-click="removeFromList($index)">Delete</button>
@@ -70,7 +70,7 @@
                         <input class="form-control" placeholder="Price" ng-model="oneToDo.price">
                         <input class="form-control" placeholder="Image URL" ng-model="oneToDo.imgUrl">
                         <div class="col-md-4">
-                            <center><button type="submit" ng-click="updateItem($index)">Update</button></center>
+                            <center><button type="submit" ng-click="updateItem()">Update</button></center>
                         </div>
                         <div class="col-md-2">
                             <center><button type="submit" ng-click="cancelEdit()">Cancel</button></center>

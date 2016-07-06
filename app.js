@@ -32,28 +32,28 @@ angular.module("PracticeApp", []).controller("MyController", function($scope, $h
 
     $http.get(url).then(function (response){
         $scope.allToDo = response.data;
-        console.log($scope.allToDo);
     });
     
     $scope.itemCompleted = function(index) {
-        var id = $scope.allToDo[index]._id;
-        $http.put('http://mean.codingcamp.us/kyle/todo/' + id).then(function(response){
-            $scope.allToDo[index].completed = true;
+        var toDoItem = $scope.allToDo[index],
+            id = toDoItem._id;
+        $http.put('http://mean.codingcamp.us/kyle/todo/' + id, toDoItem).then(function(response){
+            $scope.allToDo[index] = response.data;
         });
     };
     
     $scope.editItem = function(index) {
         $scope.hideForm = false;
         $scope.editingItem = true;
-        var id = $scope.allToDo[index]._id;
-        $http.get('http://mean.codingcamp.us/kyle/todo/' + id).then(function (response){
-            $scope.oneToDo = response.data;  
-        });
+        $scope.oneToDo = $scope.allToDo[index];
     };
     
     $scope.updateItem = function(index) {
-        var id = $scope.allToDo[index]._id;
-        $http.put('http://mean.codingcamp.us/kyle/todo/' + id).then(function (response){  
+        $scope.hideForm = true;
+        var toDoItem = $scope.oneToDo,
+            id = toDoItem._id;
+        $http.put('http://mean.codingcamp.us/kyle/todo/' + id, toDoItem).then(function (response){ 
+            $scope.oneToDo[index] = response.data;
         });
     };
     
